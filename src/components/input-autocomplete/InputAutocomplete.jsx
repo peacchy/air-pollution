@@ -8,29 +8,42 @@ const InputAutocomplete = props => {
 	const test = ["France", "Spain", "Poland", "Germany"];
 
 	useEffect(() => {
-		const result = test.filter(p => 
-			p.toLowerCase().includes(props.value)
+		const result = test.filter(p =>
+			p.toLowerCase().includes(props.value.toLowerCase())
 		);
 
 		setSuggestions(result);
 	}, [props.value]);
 
 	return (
-		<div>
-			<div>
+		<div className="search">
+			<div className="autocomplete">
 				<input
+					className="userInputSearch"
 					type="text"
 					value={props.value}
-					placeholder="e.g. France"
+					placeholder="Country"
 					onChange={event => props.onChange(event.target.value)}
 					onFocus={() => setInputFocus(true)}
 					onBlur={() => setInputFocus(false)}
 				/>
+				<ul className="autocomplete-list">
+					{inputFocus &&
+					suggestions.map((key, index) => {
+						return (
+							<li
+								className="autocomplete-list-element"
+								key={index}
+							>
+								{key}
+							</li>
+						);
+					})}
+				</ul>
 			</div>
-            {inputFocus &&
-				suggestions.map((key,index) => {
-					return <div key={index}>{key}</div>;
-				})}
+			<div className="btn">
+				<button className="btn-search">Search</button>
+			</div>
 		</div>
 	);
 };

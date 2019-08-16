@@ -1,5 +1,9 @@
 .search {
     display: flex;
+    align-items: flex-start;
+}
+li {
+    list-style: none;
 }
 .autocomplete {
     width: 50%;
@@ -7,7 +11,6 @@
     flex-direction: column;
 }
 .autocomplete-list {
-    list-style: none;
     margin: 0;
     padding-left: 0;
 
@@ -21,6 +24,10 @@
 .userInputSearch {
     padding: 0.5rem;
 }
+.dropdown {
 
-.btn-search{
-}
+ }
+
+ .dropdown-item {
+
+ }

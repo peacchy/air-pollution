@@ -1,6 +1,7 @@
 .search {
     display: flex;
     align-items: flex-start;
+    position: relative;
 }
 li {
     list-style: none;
@@ -11,8 +12,13 @@ li {
     flex-direction: column;
 }
 .autocomplete-list {
+    background-color: #a5a5a5;
     margin: 0;
     padding-left: 0;
+    position: absolute;
+    width: inherit;
+    z-index: 1;
+    top: 100%;
 
 }
 .autocomplete-list-element {
@@ -26,8 +32,8 @@ li {
 }
 .dropdown {
 
- }
+}
 
  .dropdown-item {
 
- }
+}

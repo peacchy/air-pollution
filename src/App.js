@@ -6,10 +6,9 @@ import InputAutocomplete from './components/input-autocomplete/InputAutocomplete
 import CardCity from './containers/card-city/CardCity';
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
   return (
     <div className="App">
-      <InputAutocomplete value={inputValue} onChange={setInputValue} />
+      <InputAutocomplete />
       <div className="tiles">
         <CardCity />
       </div>

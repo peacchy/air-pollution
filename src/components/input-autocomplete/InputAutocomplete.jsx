@@ -5,16 +5,17 @@ import "./InputAutocomplete.css";
 const InputAutocomplete = props => {
 	const [suggestions, setSuggestions] = useState([]);
 	const [inputFocus, setInputFocus] = useState(false);
+	const [inputValue, setInputValue] = useState("");
 	const country = ["France", "Spain", "Poland", "Germany"];
 	const pollutionType = ["CO", "SO2", "NO2", "O3", "PM10", "PM2.5"];
 
 	useEffect(() => {
 		const result = country.filter(p =>
-			p.toLowerCase().includes(props.value.toLowerCase())
+			p.toLowerCase().includes(inputValue.toLowerCase())
 		);
 
 		setSuggestions(result);
-	}, [props.value]);
+	}, [inputValue]);
 
 	return (
 		<div className="search">
@@ -22,9 +23,9 @@ const InputAutocomplete = props => {
 				<input
 					className="userInputSearch"
 					type="text"
-					value={props.value}
+					value={inputValue}
 					placeholder="Country"
-					onChange={event => props.onChange(event.target.value)}
+					onChange={event => setInputValue(event.target.value)}
 					onFocus={() => setInputFocus(true)}
 					onBlur={() => setInputFocus(false)}
 				/>
@@ -35,6 +36,7 @@ const InputAutocomplete = props => {
 								<li
 									className="autocomplete-list-element"
 									key={index}
+									onClick={() => setInputValue(key)}
 								>
 									{key}
 								</li>

@@ -26,6 +26,9 @@ li {
     border-top: none;
     padding: 0.5rem;
 }
+.autocomplete-list-element:hover {
+    background-color: #ccc;
+}
 
 .userInputSearch {
     padding: 0.5rem;

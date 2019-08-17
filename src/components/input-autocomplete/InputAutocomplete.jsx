@@ -6,15 +6,18 @@ import "./InputAutocomplete.css";
 
 const InputAutocomplete = props => {
 	const [suggestions, setSuggestions] = useState([]);
-	const [inputFocus, setInputFocus] = useState(false);
-	const [inputValue, setInputValue] = useState("");
+	const [isCountryChosen, setIsCountryChosen] = useState(true);
 
 	useEffect(() => {
-		const result = countriesData.filter(p =>
-			p.name.toLowerCase().includes(inputValue.toLowerCase())
-		);
-		setSuggestions(result);
-	}, [inputValue]);
+		if (props.countryName === "") {
+			setSuggestions([]);
+		} else {
+			const result = countriesData.filter(p =>
+				p.name.toLowerCase().includes(props.countryName.toLowerCase())
+			);
+			setSuggestions(result);
+		}
+	}, [props.countryName]);
 
 	return (
 		<div className="search">
@@ -22,20 +25,24 @@ const InputAutocomplete = props => {
 				<input
 					className="userInputSearch"
 					type="text"
-					value={inputValue}
+					value={props.countryName}
 					placeholder="Country"
-					onChange={event => setInputValue(event.target.value)}
-					onFocus={() => setInputFocus(true)}
-					onBlur={() => setInputFocus(false)}
+					onChange={event => props.setCountryName(event.target.value)}
+					onFocus={() => setIsCountryChosen(false)}
+					//onBlur={() => setSuggestions([])}
 				/>
 				<ul className="autocomplete-list">
-					{inputFocus &&
+					{suggestions.length > 0 &&
+						!isCountryChosen &&
 						suggestions.map((country, index) => {
 							return (
 								<li
 									className="autocomplete-list-element"
 									key={index}
-									onClick={() => setInputValue(country.name)}
+									onClick={() => {
+										props.setCountryName(country.name);
+										setIsCountryChosen(true);
+									}}
 								>
 									{country.name}
 								</li>
@@ -43,10 +50,17 @@ const InputAutocomplete = props => {
 						})}
 				</ul>
 			</div>
-			<select className="dropdown">
+			<select
+				className="dropdown"
+				onChange={event => props.setPollutionType(event.target.value)}
+			>
 				{pollutionType.map((type, index) => {
 					return (
-						<option className="dropdown-item" key={index}>
+						<option
+							className="dropdown-item"
+							key={index}
+							value={type.name}
+						>
 							{type.name}
 						</option>
 					);

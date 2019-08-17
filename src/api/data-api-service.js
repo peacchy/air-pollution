@@ -1,7 +1,15 @@
+import countriesData from '../../src/data/countries.json';
+
 class DataApiService {
 
-    getCitiesData(city, pollutionType) {
-        fetch(`https://api.openaq.org/v1/measurements?country=${city}&parameter=${pollutionType}&order_by=value&sort=desc&limit=5000`)
+    getCountryCodeByName(countryName) {
+        return countriesData.filter(p => p.name === countryName).code;
+    }
+
+    getCitiesData(countryName, pollutionType) {
+        const countryCode = this.getCountryCodeByName(countryName);
+
+        fetch(`https://api.openaq.org/v1/measurements?country=${countryCode}&parameter=${pollutionType}&order_by=value&sort=desc&limit=5000`)
             .then((response) => {
                 return response.json();
             })
@@ -10,7 +18,8 @@ class DataApiService {
                     return {
                         city: p.city,
                         pollution: p.value,
-                        unit: p.unit
+                        unit: p.unit,
+                        pollutionType
                     }
                 }).filter((value, index, self) => {
                     const record = self.find(c => c.city === value.city);
@@ -40,6 +49,8 @@ class DataApiService {
                 console.log(error);
             });
     }
+
+
 }
 
 const dataApiService = new DataApiService();

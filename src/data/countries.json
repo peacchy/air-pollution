@@ -1,0 +1,20 @@
+{
+    "countries": [
+        {
+            "name": "France",
+            "code": "FR"
+        },
+        {
+            "name": "Poland",
+            "code": "PL"
+        },
+        {
+            "name": "Germany",
+            "code": "DE"
+        },
+        {
+            "name": "Spain",
+            "code": "ES"
+        }
+    ]
+}

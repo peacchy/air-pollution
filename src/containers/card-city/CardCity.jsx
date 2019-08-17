@@ -6,7 +6,8 @@ import dataApiService from "../../api/data-api-service";
 
 const CardCity = () => {
 	useEffect(() => {
-		dataApiService.getCitiesData("FR", "co");
+        dataApiService.getCitiesData("FR", "co");
+        dataApiService.getCityDescription("Paris");
 	}, []);
 	return (
 		<div className="card">

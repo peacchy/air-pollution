@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 
+import countriesData from "../../data/countries.json";
+import pollutionType from "../../data/pollutionTypes.json";
 import "./InputAutocomplete.css";
 
 const InputAutocomplete = props => {
 	const [suggestions, setSuggestions] = useState([]);
 	const [inputFocus, setInputFocus] = useState(false);
 	const [inputValue, setInputValue] = useState("");
-	const country = ["France", "Spain", "Poland", "Germany"];
-	const pollutionType = ["CO", "SO2", "NO2", "O3", "PM10", "PM2.5"];
 
 	useEffect(() => {
-		const result = country.filter(p =>
-			p.toLowerCase().includes(inputValue.toLowerCase())
+		const result = countriesData.filter(p =>
+			p.name.toLowerCase().includes(inputValue.toLowerCase())
 		);
-
 		setSuggestions(result);
 	}, [inputValue]);
 
@@ -31,24 +30,24 @@ const InputAutocomplete = props => {
 				/>
 				<ul className="autocomplete-list">
 					{inputFocus &&
-						suggestions.map((key, index) => {
+						suggestions.map((country, index) => {
 							return (
 								<li
 									className="autocomplete-list-element"
 									key={index}
-									onClick={() => setInputValue(key)}
+									onClick={() => setInputValue(country.name)}
 								>
-									{key}
+									{country.name}
 								</li>
 							);
 						})}
 				</ul>
 			</div>
 			<select className="dropdown">
-				{pollutionType.map((key, index) => {
+				{pollutionType.map((type, index) => {
 					return (
 						<option className="dropdown-item" key={index}>
-							{key}
+							{type.name}
 						</option>
 					);
 				})}

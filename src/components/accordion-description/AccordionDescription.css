@@ -1,21 +1,28 @@
 .accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
+	background-color: #fff;
 }
 
-.accordion:hover {
-    background-color: #ccc;
+.accordion-btn {
+	background-color: #f2d19d;
+	cursor: pointer;
+	width: 100%;
+	text-align: left;
+	border: none;
+	outline: none;
+	font: 16px Arial;
+	height: 40px;
+	color: #6e655d;
+}
+
+.accordion-btn:hover {
+	background-color: #f2d27d;
 }
 
 .active {
-    display: block;   
+	display: block;
+	margin: 10px;
 }
 
 .hidden {
-    display: none;   
+	display: none;
 }

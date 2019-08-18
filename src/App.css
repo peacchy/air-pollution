@@ -1,7 +1,11 @@
 .App {
-    box-sizing: border-box;
+	box-sizing: border-box;
+	color: #6e655d;
 }
 .tiles {
-    display: grid;
-    /*grid-template-columns: repeat(5, 1fr);*/
+	display: grid;
+	/*grid-template-columns: repeat(5, 1fr);*/
+}
+
+.user-input {
 }

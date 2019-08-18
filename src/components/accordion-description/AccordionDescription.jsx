@@ -6,12 +6,12 @@ const AccordionDescription = () => {
 	const [showActive, setShowActive] = useState(false);
 
 	return (
-		<div className="card">
+		<div className="accordion">
 			<button
-				className="accordion"
+				className="accordion-btn"
 				onClick={() => setShowActive(!showActive)}
 			>
-				1
+				Description
 			</button>
 			<div className={showActive ? "active" : "hidden"}>
 				<p> text 1</p>

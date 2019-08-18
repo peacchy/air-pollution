@@ -53,6 +53,7 @@ const InputAutocomplete = props => {
 			<select
 				className="dropdown"
 				onChange={event => props.setPollutionType(event.target.value)}
+				required={true}
 			>
 				{pollutionType.map((type, index) => {
 					return (
@@ -67,7 +68,9 @@ const InputAutocomplete = props => {
 				})}
 			</select>
 			<div className="btn">
-				<button className="btn-search">Search</button>
+				<button className="btn-search" onClick={props.getCitiesData}>
+					Search
+				</button>
 			</div>
 		</div>
 	);

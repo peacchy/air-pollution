@@ -5,16 +5,15 @@ import AccordionDescription from "../../components/accordion-description/Accordi
 import dataApiService from "../../api/data-api-service";
 
 const CardCity = props => {
-	useEffect(() => {
-		const cityData = dataApiService.getCitiesData(
-			props.countryName,
-			props.pollutionType
-		);
-	}, []);
-
 	return (
 		<div className="card">
-			<div>
+			<div className="city-place-pollution">
+				<h6>#1</h6>
+				<h3>Paris</h3>
+				<h5>Pollution [CO]: 500uC</h5>
+			</div>
+
+			<div className="accordion">
 				<AccordionDescription />
 			</div>
 		</div>

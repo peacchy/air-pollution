@@ -4,8 +4,10 @@
 }
 .tiles {
 	display: grid;
-	/*grid-template-columns: repeat(5, 1fr);*/
+	grid-template-columns: repeat(2, 2fr);
+	text-align: center;
 }
 
 .user-input {
+	margin-bottom: 40px;
 }

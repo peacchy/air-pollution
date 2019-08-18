@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 
 import countriesData from "../../data/countries.json";
-import pollutionType from "../../data/pollutionTypes.json";
+import pollutionTypes from "../../data/pollutionTypes.json";
 import "./InputAutocomplete.css";
 
 const InputAutocomplete = props => {
 	const [suggestions, setSuggestions] = useState([]);
 	const [isCountryChosen, setIsCountryChosen] = useState(true);
+	const [countryName, setCountryName] = useState("");
+	const [pollutionType, setPollutionType] = useState("co");
 
 	useEffect(() => {
-		if (props.countryName === "") {
+		if (countryName === "") {
 			setSuggestions([]);
 		} else {
 			const result = countriesData.filter(p =>
-				p.name.toLowerCase().includes(props.countryName.toLowerCase())
+				p.name.toLowerCase().includes(countryName.toLowerCase())
 			);
 			setSuggestions(result);
 		}
-	}, [props.countryName]);
+	}, [countryName]);
 
 	return (
 		<div className="search">
@@ -25,11 +27,10 @@ const InputAutocomplete = props => {
 				<input
 					className="userInputSearch"
 					type="text"
-					value={props.countryName}
+					value={countryName}
 					placeholder="Country"
-					onChange={event => props.setCountryName(event.target.value)}
+					onChange={event => setCountryName(event.target.value)}
 					onFocus={() => setIsCountryChosen(false)}
-					//onBlur={() => setSuggestions([])}
 				/>
 				<ul className="autocomplete-list">
 					{suggestions.length > 0 &&
@@ -40,7 +41,7 @@ const InputAutocomplete = props => {
 									className="autocomplete-list-element"
 									key={index}
 									onClick={() => {
-										props.setCountryName(country.name);
+										setCountryName(country.name);
 										setIsCountryChosen(true);
 									}}
 								>
@@ -52,15 +53,15 @@ const InputAutocomplete = props => {
 			</div>
 			<select
 				className="dropdown"
-				onChange={event => props.setPollutionType(event.target.value)}
+				onChange={event => setPollutionType(event.target.value)}
 				required={true}
 			>
-				{pollutionType.map((type, index) => {
+				{pollutionTypes.map((type, index) => {
 					return (
 						<option
 							className="dropdown-item"
 							key={index}
-							value={type.name}
+							value={type.name.toLowerCase()}
 						>
 							{type.name}
 						</option>
@@ -68,7 +69,12 @@ const InputAutocomplete = props => {
 				})}
 			</select>
 			<div className="btn">
-				<button className="btn-search" onClick={props.getCitiesData}>
+				<button
+					className="btn-search"
+					onClick={() =>
+						props.getCitiesData(countryName, pollutionType)
+					}
+				>
 					Search
 				</button>
 			</div>

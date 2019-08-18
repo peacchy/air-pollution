@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 
 import './App.css';
@@ -7,38 +7,54 @@ import InputAutocomplete from './components/input-autocomplete/InputAutocomplete
 import CardCity from './containers/card-city/CardCity';
 
 function App() {
-  const [countryName, setCountryName] = useState("");
-  const [pollutionType, setPollutionType] = useState("");
 
-  useEffect(() => {
-    console.log(countryName, pollutionType);
-  }, [countryName, pollutionType])
+  const [citiesData, setCitiesData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getCitiesDataHandler = (countryName, pollutionType) => {
-    const countryCode = dataApiService.getCountryCodeByName(countryName)
-    const citiesData = dataApiService.getCitiesData(countryCode, pollutionType);
-    console.log(citiesData);
-    console.log("Button click!");
-    return citiesData;
+    setIsLoading(true);
+
+    dataApiService.getCitiesData(countryName, pollutionType)
+      .then((response) => {
+        return response.json();
+      })
+      .then(data => {
+        const result = data.results.map(p => {
+          return {
+            city: p.city,
+            pollution: p.value,
+            unit: p.unit,
+            pollutionType,
+          }
+        }).filter((value, index, self) => {
+          const record = self.find(c => c.city === value.city);
+          return self.indexOf(record) === index;
+        }).slice(0, 10);
+        console.log(result);
+        setCitiesData(result);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
   }
-
-
 
   return (
     <div className="App">
-      <div className="user-input"></div>
-      <InputAutocomplete
-        countryName={countryName}
-        setCountryName={setCountryName}
-        setPollutionType={setPollutionType}
-        getCitiesData={getCitiesDataHandler}
-      />
-
-      <div className="tiles">
-        <CardCity
-          countryName={countryName}
-          pollutionType={pollutionType}
+      <div className="user-input">
+        <InputAutocomplete
+          getCitiesData={getCitiesDataHandler}
         />
+      </div>
+      <div className="tiles">
+        {!isLoading && citiesData.length > 0 && citiesData.map((city, index) => {
+          return (
+            <div key={index}>
+              <CardCity cityData={city} cityPlace={index + 1} />
+            </div>
+          )
+        })}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./AccordionDescription.css";
 
-const AccordionDescription = () => {
+const AccordionDescription = props => {
 	const [showActive, setShowActive] = useState(false);
 
 	return (
@@ -14,7 +14,7 @@ const AccordionDescription = () => {
 				Description
 			</button>
 			<div className={showActive ? "active" : "hidden"}>
-				<p> text 1</p>
+				<p>{props.description}</p>
 			</div>
 		</div>
 	);

@@ -7,15 +7,16 @@ import "./InputAutocomplete.css";
 const InputAutocomplete = props => {
 	const [suggestions, setSuggestions] = useState([]);
 	const [isCountryChosen, setIsCountryChosen] = useState(true);
-	const [countryName, setCountryName] = useState(
-		localStorage.getItem("countryName")
-	);
-	const [pollutionType, setPollutionType] = useState(
-		localStorage.getItem("pollutionType")
-	);
+	const [countryName, setCountryName] = useState("");
+	const [pollutionType, setPollutionType] = useState("co");
 
 	useEffect(() => {
-		if (countryName === "") {
+		setCountryName(localStorage.getItem("countryName") || "");
+		setPollutionType(localStorage.getItem("pollutionType") || "co");
+	}, []);
+
+	useEffect(() => {
+		if (!countryName) {
 			setSuggestions([]);
 		} else {
 			const result = countriesData.filter(p =>

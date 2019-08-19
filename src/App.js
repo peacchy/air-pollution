@@ -42,6 +42,7 @@ function App() {
 
   return (
     <div className="App">
+
       <div className="user-input">
         <InputAutocomplete
           getCitiesData={getCitiesDataHandler}

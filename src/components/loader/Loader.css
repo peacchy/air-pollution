@@ -1,5 +1,9 @@
 .loader {
 	background-color: rgba(110, 101, 93, 0.7);
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 1;
 }
 
 .spinner {

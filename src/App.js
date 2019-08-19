@@ -5,6 +5,7 @@ import './App.css';
 import dataApiService from './api/data-api-service.js'
 import InputAutocomplete from './components/input-autocomplete/InputAutocomplete';
 import CardCity from './containers/card-city/CardCity';
+import Loader from './components/loader/Loader';
 
 function App() {
 
@@ -42,6 +43,8 @@ function App() {
 
   return (
     <div className="App">
+
+      {isLoading === true ? <Loader /> : null}
 
       <div className="user-input">
         <InputAutocomplete

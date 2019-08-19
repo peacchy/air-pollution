@@ -2,12 +2,15 @@
 	display: flex;
 	align-items: flex-start;
 	position: relative;
+	left: 25%;
+	padding: 20px;
+	padding-bottom: 0;
 }
 li {
 	list-style: none;
 }
 .autocomplete {
-	width: 50%;
+	width: 380px;
 	display: flex;
 	flex-direction: column;
 }
@@ -28,16 +31,25 @@ li {
 .autocomplete-list-element:hover {
 	background-color: #ccc;
 }
-
+option {
+	text-align: center;
+}
 .dropdown {
 	height: 36px;
+	width: 100px;
+	text-align: center;
+	appearance: none;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.userInputSearch {
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
 }
 
 .userInputSearch,
 .dropdown {
 	padding: 0.5rem;
 	border: 1px solid transparent;
-	background-color: #f1f1f1;
 	font: 16px Arial;
 	color: #6e655d;
 }
@@ -51,4 +63,5 @@ li {
 	margin-left: 5px;
 	width: 80px;
 	font: 16px Arial;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
 }

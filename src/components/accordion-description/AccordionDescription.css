@@ -21,6 +21,8 @@
 .active {
 	display: block;
 	margin: 10px;
+	max-height: 250px;
+	overflow: auto;
 }
 
 .hidden {

@@ -3,11 +3,12 @@ import countriesData from '../../src/data/countries.json';
 class DataApiService {
 
     getCountryCodeByName(countryName) {
-        return countriesData.find(p => p.name === countryName).code;
+        const country = countriesData.find(p => p.name === countryName);
+
+        return country ? country.code : null;
     }
 
-    getCitiesData(countryName, pollutionType) {
-        const countryCode = this.getCountryCodeByName(countryName);
+    getCitiesData(countryCode, pollutionType) {
 
         return fetch(`https://api.openaq.org/v1/measurements?country=${countryCode}&parameter=${pollutionType}&order_by=value&sort=desc&limit=5000`);
     }

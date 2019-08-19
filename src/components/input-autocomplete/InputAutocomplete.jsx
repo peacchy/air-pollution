@@ -7,8 +7,12 @@ import "./InputAutocomplete.css";
 const InputAutocomplete = props => {
 	const [suggestions, setSuggestions] = useState([]);
 	const [isCountryChosen, setIsCountryChosen] = useState(true);
-	const [countryName, setCountryName] = useState("");
-	const [pollutionType, setPollutionType] = useState("co");
+	const [countryName, setCountryName] = useState(
+		localStorage.getItem("countryName")
+	);
+	const [pollutionType, setPollutionType] = useState(
+		localStorage.getItem("pollutionType")
+	);
 
 	useEffect(() => {
 		if (countryName === "") {
@@ -19,7 +23,10 @@ const InputAutocomplete = props => {
 			);
 			setSuggestions(result);
 		}
-	}, [countryName]);
+
+		localStorage.setItem("countryName", countryName);
+		localStorage.setItem("pollutionType", pollutionType);
+	}, [countryName, pollutionType]);
 
 	return (
 		<div className="search">
@@ -55,6 +62,7 @@ const InputAutocomplete = props => {
 				className="dropdown"
 				onChange={event => setPollutionType(event.target.value)}
 				required={true}
+				value={pollutionType}
 			>
 				{pollutionTypes.map((type, index) => {
 					return (

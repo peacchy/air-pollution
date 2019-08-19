@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
-
 import './App.css';
 import dataApiService from './api/data-api-service.js'
 import InputAutocomplete from './components/input-autocomplete/InputAutocomplete';
 import CardCity from './containers/card-city/CardCity';
-import Loader from './components/loader/Loader';
+import Loader from "./components/loader/Loader";
 
 function App() {
 
@@ -13,9 +12,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   const getCitiesDataHandler = (countryName, pollutionType) => {
+
+    const countryCode = dataApiService.getCountryCodeByName(countryName);
+
+    if (countryCode === null) {
+      alert("Wrong country name!");
+      return;
+    }
+
     setIsLoading(true);
 
-    dataApiService.getCitiesData(countryName, pollutionType)
+    dataApiService.getCitiesData(countryCode, pollutionType)
       .then((response) => {
         return response.json();
       })
@@ -31,7 +38,7 @@ function App() {
           const record = self.find(c => c.city === value.city);
           return self.indexOf(record) === index;
         }).slice(0, 10);
-        console.log(result);
+
         setCitiesData(result);
         setIsLoading(false);
       })
@@ -43,9 +50,7 @@ function App() {
 
   return (
     <div className="App">
-
-      {isLoading === true ? <Loader /> : null}
-
+      {isLoading && <Loader />}
       <div className="user-input">
         <InputAutocomplete
           getCitiesData={getCitiesDataHandler}

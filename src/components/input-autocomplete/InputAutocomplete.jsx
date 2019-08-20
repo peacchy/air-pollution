@@ -6,7 +6,6 @@ import "./InputAutocomplete.css";
 
 const InputAutocomplete = props => {
 	const [suggestions, setSuggestions] = useState([]);
-	const [isCountryChosen, setIsCountryChosen] = useState(true);
 	const [countryName, setCountryName] = useState("");
 	const [pollutionType, setPollutionType] = useState("co");
 
@@ -20,7 +19,7 @@ const InputAutocomplete = props => {
 			setSuggestions([]);
 		} else {
 			const result = countriesData.filter(p =>
-				p.name.toLowerCase().includes(countryName.toLowerCase())
+				p.name.includes(countryName)
 			);
 			setSuggestions(result);
 		}
@@ -34,31 +33,31 @@ const InputAutocomplete = props => {
 			<div className="autocomplete">
 				<input
 					className="userInputSearch"
+					list="autocomplete-list"
 					type="text"
 					value={countryName}
 					placeholder="Country"
 					onChange={event => setCountryName(event.target.value)}
-					onFocus={() => setIsCountryChosen(false)}
 				/>
-				<ul className="autocomplete-list">
+				<datalist className="autocomplete-list" id="autocomplete-list">
 					{suggestions.length > 0 &&
-						!isCountryChosen &&
 						suggestions.map((country, index) => {
 							return (
-								<li
+								<option
 									className="autocomplete-list-element"
 									key={index}
 									onClick={() => {
 										setCountryName(country.name);
-										setIsCountryChosen(true);
 									}}
+									value={country.name}
 								>
 									{country.name}
-								</li>
+								</option>
 							);
 						})}
-				</ul>
+				</datalist>
 			</div>
+
 			<select
 				className="dropdown"
 				onChange={event => setPollutionType(event.target.value)}
@@ -77,6 +76,7 @@ const InputAutocomplete = props => {
 					);
 				})}
 			</select>
+
 			<div className="btn">
 				<button
 					className="btn-search"

@@ -1,18 +1,18 @@
 [
     {
-        "name": "france",
+        "name": "France",
         "code": "FR"
     },
     {
-        "name": "poland",
+        "name": "Poland",
         "code": "PL"
     },
     {
-        "name": "germany",
+        "name": "Germany",
         "code": "DE"
     },
     {
-        "name": "spain",
+        "name": "Spain",
         "code": "ES"
     }
 ]

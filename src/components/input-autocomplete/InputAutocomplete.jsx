@@ -49,13 +49,9 @@ const InputAutocomplete = props => {
 									onClick={() => {
 										setCountryName(country.name);
 									}}
-									value={
-										country.name.charAt(0).toUpperCase() +
-										country.name.slice(1)
-									}
+									value={country.name}
 								>
-									{country.name.charAt(0).toUpperCase() +
-										country.name.slice(1)}
+									{country.name}
 								</option>
 							);
 						})}

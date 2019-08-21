@@ -26,7 +26,7 @@ https://air-pollution-app.herokuapp.com/
 
 ## Authors
 
-* **Daria Ratyńska** - *Initial work*
+* **Daria Ratyńska**
 
 
 ## License

@@ -24,7 +24,7 @@ npm start
 https://air-pollution-app.herokuapp.com/
 
 
-##Authors
+## Authors
 
 * **Daria Ratyńska** - *Initial work*
 

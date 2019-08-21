@@ -7,7 +7,7 @@ Air pollution is an application  for listing the most polluted cities depending 
 In order to run a project you need to install [Node.js](https://nodejs.org/en/).
 If you have it already you supposed to have npm package manager with it
 
-install dependencies
+Install dependencies
 
 ```
 npm install

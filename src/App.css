@@ -3,9 +3,20 @@
 	color: #6e655d;
 }
 .tiles {
-	display: grid;
-	grid-template-columns: repeat(2, 2fr);
-	text-align: center;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	margin: 2rem;
+}
+
+.tile {
+	flex-grow: 1;
+}
+
+@media (min-width: 500px) {
+	.tile {
+		flex-basis: 35%;
+	}
 }
 
 .user-input {

@@ -59,7 +59,7 @@ function App() {
       <div className="tiles">
         {!isLoading && citiesData.length > 0 && citiesData.map((city, index) => {
           return (
-            <div key={index}>
+            <div className="tile" key={index}>
               <CardCity cityData={city} cityPlace={index + 1} />
             </div>
           )

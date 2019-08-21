@@ -2,6 +2,12 @@
 	box-sizing: border-box;
 	color: #6e655d;
 }
+
+.user-input {
+	margin-bottom: 2.5rem;
+	justify-content: center;
+}
+
 .tiles {
 	display: flex;
 	flex-flow: row wrap;
@@ -13,19 +19,14 @@
 	flex-grow: 1;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 31.2rem) {
 	.tile {
 		flex-basis: 35%;
 	}
 }
 
-@media (max-width: 499px) {
+@media (max-width: 31.1rem) {
 	.tile {
 		flex-basis: 55%;
 	}
-}
-
-.user-input {
-	margin-bottom: 40px;
-	justify-content: center;
 }

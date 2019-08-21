@@ -39,12 +39,11 @@ const InputAutocomplete = props => {
 					placeholder="Country"
 					onChange={event => setCountryName(event.target.value)}
 				/>
-				<datalist className="autocomplete-list" id="autocomplete-list">
+				<datalist id="autocomplete-list">
 					{suggestions.length > 0 &&
 						suggestions.map((country, index) => {
 							return (
 								<option
-									className="autocomplete-list-element"
 									key={index}
 									onClick={() => {
 										setCountryName(country.name);
@@ -66,11 +65,7 @@ const InputAutocomplete = props => {
 			>
 				{pollutionTypes.map((type, index) => {
 					return (
-						<option
-							className="dropdown-item"
-							key={index}
-							value={type.name.toLowerCase()}
-						>
+						<option key={index} value={type.name.toLowerCase()}>
 							{type.name}
 						</option>
 					);

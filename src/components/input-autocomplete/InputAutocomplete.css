@@ -2,7 +2,7 @@
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
-	padding: 20px;
+	padding: 1.25rem;
 	padding-bottom: 0;
 	flex-wrap: wrap;
 }
@@ -11,30 +11,33 @@
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
-	max-width: 400px;
+	max-width: 25rem;
 }
 
 .userInputSearch {
-	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+	box-shadow: 0 0.6rem 0.9rem rgba(0, 0, 0, 0.25),
+		0 0.3rem 0.3rem rgba(0, 0, 0, 0.22);
 }
 
 .userInputSearch,
 .dropdown {
 	padding: 0.5rem;
 	border: 1px solid transparent;
-	font: 16px Arial;
+	font: 1rem Arial;
 	color: #6e655d;
 }
 
 option {
 	text-align: center;
 }
+
 .dropdown {
-	height: 36px;
-	width: 100px;
+	height: 2.25rem;
+	width: 6rem;
 	text-align: center;
 	appearance: none;
-	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+	box-shadow: 0 0.6rem 0.9rem rgba(0, 0, 0, 0.25),
+		0 0.3rem 0.3rem rgba(0, 0, 0, 0.22);
 }
 
 .btn-search {
@@ -42,9 +45,10 @@ option {
 	background-color: #ed704e;
 	color: #fff;
 	cursor: pointer;
-	height: 37px;
-	margin-left: 5px;
-	width: 80px;
-	font: 16px Arial;
-	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+	height: 2.25rem;
+	margin-left: 0.3rem;
+	width: 5rem;
+	font: 1rem Arial;
+	box-shadow: 0 0.6rem 0.9rem rgba(0, 0, 0, 0.25),
+		0 0.3rem 0.3rem rgba(0, 0, 0, 0.22);
 }

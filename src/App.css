@@ -19,6 +19,12 @@
 	}
 }
 
+@media (max-width: 499px) {
+	.tile {
+		flex-basis: 55%;
+	}
+}
+
 .user-input {
 	margin-bottom: 40px;
 	justify-content: center;

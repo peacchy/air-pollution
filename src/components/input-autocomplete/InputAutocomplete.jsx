@@ -19,7 +19,7 @@ const InputAutocomplete = props => {
 			setSuggestions([]);
 		} else {
 			const result = countriesData.filter(p =>
-				p.name.includes(countryName)
+				p.name.toLowerCase().includes(countryName.toLowerCase())
 			);
 			setSuggestions(result);
 		}
@@ -49,9 +49,13 @@ const InputAutocomplete = props => {
 									onClick={() => {
 										setCountryName(country.name);
 									}}
-									value={country.name}
+									value={
+										country.name.charAt(0).toUpperCase() +
+										country.name.slice(1)
+									}
 								>
-									{country.name}
+									{country.name.charAt(0).toUpperCase() +
+										country.name.slice(1)}
 								</option>
 							);
 						})}

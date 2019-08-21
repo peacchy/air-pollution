@@ -9,8 +9,8 @@
 	text-align: left;
 	border: none;
 	outline: none;
-	font: 16px Arial;
-	height: 40px;
+	font: 1rem Arial;
+	height: 2.5rem;
 	color: #6e655d;
 }
 
@@ -20,11 +20,15 @@
 
 .active {
 	display: block;
-	margin: 10px;
-	max-height: 250px;
+	margin: 0.6rem;
+	max-height: 15.6rem;
 	overflow: auto;
 }
 
 .hidden {
 	display: none;
+}
+
+p {
+	margin-top: 0;
 }

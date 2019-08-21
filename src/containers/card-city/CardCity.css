@@ -2,14 +2,15 @@
 	background-color: #fff;
 	border-radius: 2px;
 	width: 90%;
-	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-	margin-bottom: 50px;
+	box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.25),
+		0 0.6rem 0.6rem rgba(0, 0, 0, 0.22);
+	margin: 0 auto 50px;
 }
 
 .city-place-pollution {
 	text-align: center;
-	min-height: 150px;
-	padding-top: 20px;
+	min-height: 0.9rem;
+	padding-top: 1.25rem;
 }
 
 h6 {

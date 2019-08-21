@@ -2,6 +2,10 @@
 
 Air pollution is an application  for listing the most polluted cities depending on the type of pollution.
 
+## Demo
+
+https://air-pollution-app.herokuapp.com/
+
 ## Installing
 
 In order to run a project you need to install [Node.js](https://nodejs.org/en/).
@@ -19,9 +23,6 @@ Use the npm package manager to run project
 npm start
 ```
 
-## Try me online!
-
-https://air-pollution-app.herokuapp.com/
 
 
 ## Authors

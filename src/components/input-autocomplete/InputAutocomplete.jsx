@@ -67,6 +67,11 @@ const InputAutocomplete = props => {
 				onChange={event => setPollutionType(event.target.value)}
 				required={true}
 				value={pollutionType}
+				onKeyPress={event => {
+					if (event.key === "Enter") {
+						props.getCitiesData(countryName, pollutionType);
+					}
+				}}
 			>
 				{pollutionTypes.map((type, index) => {
 					return (

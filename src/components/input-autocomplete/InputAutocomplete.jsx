@@ -38,6 +38,11 @@ const InputAutocomplete = props => {
 					value={countryName}
 					placeholder="Country"
 					onChange={event => setCountryName(event.target.value)}
+					onKeyPress={event => {
+						if (event.key === "Enter") {
+							props.getCitiesData(countryName, pollutionType);
+						}
+					}}
 				/>
 				<datalist id="autocomplete-list">
 					{suggestions.length > 0 &&
